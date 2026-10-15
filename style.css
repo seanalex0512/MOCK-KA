@@ -143,6 +143,21 @@ header {
   opacity: 0.8;
 }
 
+/* ── PROGRESS BAR ── */
+.progress-bar-container {
+  position: sticky;
+  top: 48px;
+  z-index: 99;
+  height: 4px;
+  background: #2a2a4a;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #27ae60;
+  transition: width 0.3s ease;
+}
+
 /* ── SECTION BANNERS ── */
 .section-banner {
   background: linear-gradient(135deg, #0f3460, #16213e);

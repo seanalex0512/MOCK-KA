@@ -778,6 +778,7 @@ function startExam() {
   document.getElementById("header-name").textContent = studentName;
   renderMCQ();
   renderSubjective();
+  attachSubjectiveListeners();
 }
 
 // allow Enter key to start
@@ -843,12 +844,28 @@ function selectOption(qId, key) {
 
 // ── UPDATE PROGRESS ──
 function updateProgress() {
-  let count = 0;
+  let mcqAnswered = 0;
   mcqQuestions.forEach(function(q) {
     const card = document.getElementById("mcq-" + q.id);
-    if (card && card.classList.contains("answered")) count++;
+    if (card && card.classList.contains("answered")) mcqAnswered++;
   });
-  document.getElementById("progress-text").textContent = count + " / 40 answered";
+  document.getElementById("progress-text").textContent = mcqAnswered + " / 40 answered";
+
+  // Count subjective parts filled
+  let subjFilled = 0;
+  let subjTotal = 0;
+  subjectiveQuestions.forEach(function(q) {
+    q.parts.forEach(function(part) {
+      subjTotal++;
+      const textarea = document.getElementById(part.fieldId);
+      if (textarea && textarea.value.trim().length > 0) subjFilled++;
+    });
+  });
+
+  const totalItems = 40 + subjTotal;
+  const totalFilled = mcqAnswered + subjFilled;
+  const percent = Math.round((totalFilled / totalItems) * 100);
+  document.getElementById("progress-bar").style.width = percent + "%";
 }
 
 // ── RENDER SUBJECTIVE ──
@@ -879,6 +896,18 @@ function renderSubjective() {
   });
 
   container.innerHTML = html;
+}
+
+// ── SUBJECTIVE LISTENERS ──
+function attachSubjectiveListeners() {
+  subjectiveQuestions.forEach(function(q) {
+    q.parts.forEach(function(part) {
+      const textarea = document.getElementById(part.fieldId);
+      if (textarea) {
+        textarea.addEventListener("input", updateProgress);
+      }
+    });
+  });
 }
 
 // ── SUBMIT EXAM ──
