@@ -386,91 +386,91 @@ const mcqQuestions = [
     id: 31,
     text: "Determine the correct descriptions of units of measurement in CSS for typography:",
     statements: [
-      "I. Pixels (px) is an absolute unit of measurement that specifies the exact size of an element on the screen.",
-      "II. Ems (em) is a relative unit of measurement that is based on the font size of the parent element.",
-      "III. Rems (rem) is a relative unit of measurement based on the font size of the root element.",
-      "IV. Percentage (%) is an absolute unit of measurement that cannot scale."
+      "I. Percentage (%) is an absolute unit of measurement that cannot scale.",
+      "II. Pixels (px) is an absolute unit of measurement that specifies the exact size of an element on the screen.",
+      "III. Ems (em) is a relative unit of measurement that is based on the font size of the parent element.",
+      "IV. Rems (rem) is a relative unit of measurement based on the font size of the root element."
     ],
     options: [
       { key: "A", text: "I, II, III" },
-      { key: "B", text: "I, II, IV" },
-      { key: "C", text: "I, III, IV" },
-      { key: "D", text: "II, III, IV" }
+      { key: "B", text: "I, III, IV" },
+      { key: "C", text: "II, III, IV" },
+      { key: "D", text: "I, II, IV" }
     ],
-    answer: "669954a0f5f376e9",
-    explanation: "Statements I, II, and III are correct. Percentage (%) is actually a relative unit that scales with the parent element, so IV is incorrect."
+    answer: "5ab8937908442a9b",
+    explanation: "Statements II, III, and IV are correct. Percentage (%) is actually a relative unit that scales with the parent element, so I is incorrect."
   },
   {
     id: 32,
     text: "Choose the correct statements about the <code>'fr'</code> unit in CSS Grid:",
     statements: [
-      "I. 'fr' stands for \"fractional unit.\"",
-      "II. The 'fr' unit is used to divide the available space in the grid container evenly between the grid tracks.",
-      "III. The 'fr' unit can be used to set the size of grid gaps.",
-      "IV. The 'fr' unit can only be used with the 'grid-template-columns' property."
+      "I. The 'fr' unit can be used to set the size of grid gaps.",
+      "II. 'fr' stands for \"fractional unit.\"",
+      "III. The 'fr' unit can only be used with the 'grid-template-columns' property.",
+      "IV. The 'fr' unit is used to divide the available space in the grid container evenly between the grid tracks."
     ],
     options: [
       { key: "A", text: "I, II, III" },
-      { key: "B", text: "I, II, IV" },
-      { key: "C", text: "II, III, IV" },
-      { key: "D", text: "I, III, IV" }
+      { key: "B", text: "II, IV" },
+      { key: "C", text: "I, III, IV" },
+      { key: "D", text: "I, II, IV" }
     ],
-    answer: "b7d4eae7a7492fa5",
-    explanation: "I and II are correct. III is wrong because the <code>fr</code> unit cannot be used for grid gaps (gaps use px, em, etc.). IV is wrong because <code>fr</code> can also be used with <code>grid-template-rows</code>."
+    answer: "d5e9ef283c95f8dd",
+    explanation: "II and IV are correct. I is wrong because the <code>fr</code> unit cannot be used for grid gaps (gaps use px, em, etc.). III is wrong because <code>fr</code> can also be used with <code>grid-template-rows</code>."
   },
   {
     id: 33,
     text: "Select the correct statements about the <code>&lt;meta name=\"viewport\"&gt;</code> tag:",
     statements: [
-      "I. It helps make a website responsive on different devices like smartphones, tablets, and computers.",
-      "II. The width=device-width sets the width of the page to match the screen width of the device.",
-      "III. The initial-scale=1.0 sets the initial zoom level when the page is first loaded.",
-      "IV. The viewport meta tag is used to define the character encoding for the webpage."
+      "I. The viewport meta tag is used to define the character encoding for the webpage.",
+      "II. It helps make a website responsive on different devices like smartphones, tablets, and computers.",
+      "III. The width=device-width sets the width of the page to match the screen width of the device.",
+      "IV. The initial-scale=1.0 sets the initial zoom level when the page is first loaded."
     ],
     options: [
       { key: "A", text: "I, II, III" },
-      { key: "B", text: "I, II, IV" },
-      { key: "C", text: "I, III, IV" },
+      { key: "B", text: "I, III, IV" },
+      { key: "C", text: "I, II, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "052f682809e7514f",
-    explanation: "I, II, and III are correct. IV is wrong — character encoding is set by <code>&lt;meta charset=\"UTF-8\"&gt;</code>, not the viewport tag."
+    answer: "5a5b33b4fd2af652",
+    explanation: "II, III, and IV are correct. I is wrong — character encoding is set by <code>&lt;meta charset=\"UTF-8\"&gt;</code>, not the viewport tag."
   },
   {
     id: 34,
     text: "Determine the correct descriptions of JavaScript data types:",
     statements: [
-      "I. Strings are used to represent text and are enclosed in single or double quotes.",
-      "II. Numbers are used for mathematical computations and can represent integers or floating-point values.",
-      "III. Booleans can only hold the values true or false.",
-      "IV. Arrays are a primitive data type in JavaScript that cannot hold multiple values."
+      "I. Arrays are a primitive data type in JavaScript that cannot hold multiple values.",
+      "II. Strings are used to represent text and are enclosed in single or double quotes.",
+      "III. Numbers are used for mathematical computations and can represent integers or floating-point values.",
+      "IV. Booleans can only hold the values true or false."
     ],
     options: [
       { key: "A", text: "I, II, III" },
-      { key: "B", text: "I, II, IV" },
+      { key: "B", text: "II, III, IV" },
       { key: "C", text: "I, III, IV" },
-      { key: "D", text: "II, III, IV" }
+      { key: "D", text: "I, II, IV" }
     ],
-    answer: "8d1f0e4a824dc404",
-    explanation: "I, II, and III are correct. IV is wrong — Arrays are objects (not primitive) and they can hold multiple values."
+    answer: "40a3d8bcb0d47a4b",
+    explanation: "II, III, and IV are correct. I is wrong — Arrays are objects (not primitive) and they can hold multiple values."
   },
   {
     id: 35,
     text: "Choose the correct statements about CSS Flexbox:",
     statements: [
-      "I. justify-content aligns items along the main axis.",
-      "II. align-items aligns items along the cross axis.",
-      "III. flex-wrap: wrap allows flex items to wrap onto multiple lines.",
-      "IV. flex-direction: column arranges items from left to right."
+      "I. flex-direction: column arranges items from left to right.",
+      "II. justify-content aligns items along the main axis.",
+      "III. align-items aligns items along the cross axis.",
+      "IV. flex-wrap: wrap allows flex items to wrap onto multiple lines."
     ],
     options: [
       { key: "A", text: "I, II, III" },
-      { key: "B", text: "I, II, IV" },
-      { key: "C", text: "I, III, IV" },
-      { key: "D", text: "II, III, IV" }
+      { key: "B", text: "I, III, IV" },
+      { key: "C", text: "II, III, IV" },
+      { key: "D", text: "I, II, IV" }
     ],
-    answer: "ac84a89a41a84e14",
-    explanation: "I, II, and III are correct. IV is wrong — <code>flex-direction: column</code> arranges items from top to bottom, not left to right."
+    answer: "f5122ee050158cd2",
+    explanation: "II, III, and IV are correct. I is wrong — <code>flex-direction: column</code> arranges items from top to bottom, not left to right."
   },
   {
     id: 36,
@@ -513,19 +513,19 @@ const mcqQuestions = [
     id: 38,
     text: "Choose the correct statements about CSS Grid:",
     statements: [
-      "I. grid-template-columns defines the number and size of columns in a grid container.",
-      "II. grid-template-rows defines the number and size of rows in a grid container.",
-      "III. The fr unit stands for \"fractional unit\" and divides available space proportionally.",
-      "IV. CSS Grid and Flexbox are exactly the same and can be used interchangeably."
+      "I. CSS Grid and Flexbox are exactly the same and can be used interchangeably.",
+      "II. grid-template-columns defines the number and size of columns in a grid container.",
+      "III. grid-template-rows defines the number and size of rows in a grid container.",
+      "IV. The fr unit stands for \"fractional unit\" and divides available space proportionally."
     ],
     options: [
       { key: "A", text: "I, II, III" },
-      { key: "B", text: "I, II, IV" },
-      { key: "C", text: "I, III, IV" },
+      { key: "B", text: "I, III, IV" },
+      { key: "C", text: "I, II, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "38d29e447e363b41",
-    explanation: "I, II, and III are correct. IV is wrong — CSS Grid is for two-dimensional layouts while Flexbox is for one-dimensional layouts. They serve different purposes."
+    answer: "2b68569234236a81",
+    explanation: "II, III, and IV are correct. I is wrong — CSS Grid is for two-dimensional layouts while Flexbox is for one-dimensional layouts. They serve different purposes."
   },
   {
     id: 39,

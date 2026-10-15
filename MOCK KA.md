@@ -325,71 +325,71 @@ D. ['red']
 
 31. Determine the correct descriptions of units of measurement in CSS for typography:
 
-I. Pixels (px) is an absolute unit of measurement that specifies the exact size of an element on the screen.
-II. Ems (em) is a relative unit of measurement that is based on the font size of the parent element.
-III. Rems (rem) is a relative unit of measurement based on the font size of the root element.
-IV. Percentage (%) is an absolute unit of measurement that cannot scale.
+I. Percentage (%) is an absolute unit of measurement that cannot scale.
+II. Pixels (px) is an absolute unit of measurement that specifies the exact size of an element on the screen.
+III. Ems (em) is a relative unit of measurement that is based on the font size of the parent element.
+IV. Rems (rem) is a relative unit of measurement based on the font size of the root element.
 
 A. I, II, III
-B. I, II, IV
-C. I, III, IV
-D. II, III, IV
+B. I, III, IV
+C. II, III, IV
+D. I, II, IV
 
 ---
 
 32. Choose the correct statements about the `'fr'` unit in CSS Grid:
 
-I. `'fr'` stands for "fractional unit."
-II. The `'fr'` unit is used to divide the available space in the grid container evenly between the grid tracks.
-III. The `'fr'` unit can be used to set the size of grid gaps.
-IV. The `'fr'` unit can only be used with the `'grid-template-columns'` property.
+I. The `'fr'` unit can be used to set the size of grid gaps.
+II. `'fr'` stands for "fractional unit."
+III. The `'fr'` unit can only be used with the `'grid-template-columns'` property.
+IV. The `'fr'` unit is used to divide the available space in the grid container evenly between the grid tracks.
 
 A. I, II, III
-B. I, II, IV
-C. II, III, IV
-D. I, III, IV
+B. II, IV
+C. I, III, IV
+D. I, II, IV
 
 ---
 
 33. Select the correct statements about the `<meta name="viewport">` tag:
 
-I. It helps make a website responsive on different devices like smartphones, tablets, and computers.
-II. The `width=device-width` sets the width of the page to match the screen width of the device.
-III. The `initial-scale=1.0` sets the initial zoom level when the page is first loaded.
-IV. The viewport meta tag is used to define the character encoding for the webpage.
+I. The viewport meta tag is used to define the character encoding for the webpage.
+II. It helps make a website responsive on different devices like smartphones, tablets, and computers.
+III. The `width=device-width` sets the width of the page to match the screen width of the device.
+IV. The `initial-scale=1.0` sets the initial zoom level when the page is first loaded.
 
 A. I, II, III
-B. I, II, IV
-C. I, III, IV
+B. I, III, IV
+C. I, II, IV
 D. II, III, IV
 
 ---
 
 34. Determine the correct descriptions of JavaScript data types:
 
-I. Strings are used to represent text and are enclosed in single or double quotes.
-II. Numbers are used for mathematical computations and can represent integers or floating-point values.
-III. Booleans can only hold the values true or false.
-IV. Arrays are a primitive data type in JavaScript that cannot hold multiple values.
+I. Arrays are a primitive data type in JavaScript that cannot hold multiple values.
+II. Strings are used to represent text and are enclosed in single or double quotes.
+III. Numbers are used for mathematical computations and can represent integers or floating-point values.
+IV. Booleans can only hold the values true or false.
 
 A. I, II, III
-B. I, II, IV
+B. II, III, IV
 C. I, III, IV
-D. II, III, IV
+D. I, II, IV
 
 ---
 
 35. Choose the correct statements about CSS Flexbox:
 
-I. `justify-content` aligns items along the main axis.
-II. `align-items` aligns items along the cross axis.
-III. `flex-wrap: wrap` allows flex items to wrap onto multiple lines.
-IV. `flex-direction: column` arranges items from left to right.
+I. `flex-direction: column` arranges items from left to right.
+II. `justify-content` aligns items along the main axis.
+III. `align-items` aligns items along the cross axis.
+IV. `flex-wrap: wrap` allows flex items to wrap onto multiple lines.
 
 A. I, II, III
-B. I, II, IV
-C. I, III, IV
-D. II, III, IV
+B. I, III, IV
+C. II, III, IV
+D. I, II, IV
 
 ---
 
@@ -433,14 +433,14 @@ D. II, III, IV
 
 38. Choose the correct statements about CSS Grid:
 
-I. `grid-template-columns` defines the number and size of columns in a grid container.
-II. `grid-template-rows` defines the number and size of rows in a grid container.
-III. The `fr` unit stands for "fractional unit" and divides available space proportionally.
-IV. CSS Grid and Flexbox are exactly the same and can be used interchangeably.
+I. CSS Grid and Flexbox are exactly the same and can be used interchangeably.
+II. `grid-template-columns` defines the number and size of columns in a grid container.
+III. `grid-template-rows` defines the number and size of rows in a grid container.
+IV. The `fr` unit stands for "fractional unit" and divides available space proportionally.
 
 A. I, II, III
-B. I, II, IV
-C. I, III, IV
+B. I, III, IV
+C. I, II, IV
 D. II, III, IV
 
 ---
