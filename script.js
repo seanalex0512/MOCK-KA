@@ -404,19 +404,19 @@ const mcqQuestions = [
     id: 32,
     text: "Choose the correct statements about the <code>'fr'</code> unit in CSS Grid:",
     statements: [
-      "I. The 'fr' unit can be used to set the size of grid gaps.",
-      "II. 'fr' stands for \"fractional unit.\"",
-      "III. The 'fr' unit can only be used with the 'grid-template-columns' property.",
-      "IV. The 'fr' unit is used to divide the available space in the grid container evenly between the grid tracks."
+      "I. 'fr' stands for \"fractional unit.\"",
+      "II. The 'fr' unit can be used to set the size of grid gaps.",
+      "III. The 'fr' unit is used to divide the available space in the grid container proportionally between the grid tracks.",
+      "IV. The 'fr' unit can be used with both 'grid-template-columns' and 'grid-template-rows'."
     ],
     options: [
       { key: "A", text: "I, II, III" },
-      { key: "B", text: "II, IV" },
+      { key: "B", text: "II, III, IV" },
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "I, II, IV" }
     ],
-    answer: "d5e9ef283c95f8dd",
-    explanation: "II and IV are correct. I is wrong because the <code>fr</code> unit cannot be used for grid gaps (gaps use px, em, etc.). III is wrong because <code>fr</code> can also be used with <code>grid-template-rows</code>."
+    answer: "82dbf65ff3346002",
+    explanation: "I, III, and IV are correct. II is wrong — the <code>fr</code> unit cannot be used for grid gaps. Grid gaps use units like px, em, or rem."
   },
   {
     id: 33,

@@ -339,13 +339,13 @@ D. I, II, IV
 
 32. Choose the correct statements about the `'fr'` unit in CSS Grid:
 
-I. The `'fr'` unit can be used to set the size of grid gaps.
-II. `'fr'` stands for "fractional unit."
-III. The `'fr'` unit can only be used with the `'grid-template-columns'` property.
-IV. The `'fr'` unit is used to divide the available space in the grid container evenly between the grid tracks.
+I. `'fr'` stands for "fractional unit."
+II. The `'fr'` unit can be used to set the size of grid gaps.
+III. The `'fr'` unit is used to divide the available space in the grid container proportionally between the grid tracks.
+IV. The `'fr'` unit can be used with both `'grid-template-columns'` and `'grid-template-rows'`.
 
 A. I, II, III
-B. II, IV
+B. II, III, IV
 C. I, III, IV
 D. I, II, IV
 
