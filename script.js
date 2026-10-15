@@ -577,21 +577,24 @@ const subjectiveQuestions = [
         marks: 10,
         text: "Create an HTML structure that includes a heading (h2) with the text \"My Hobbies\", an ordered list (<code>&lt;ol&gt;</code>) with three hobbies, and a paragraph below the list. Add a class called <code>\"highlight\"</code> to the second list item.",
         scaffold: "<!DOCTYPE html>\n<html>\n<head>\n  <title>My Hobbies</title>\n</head>\n<body>\n\n<!-- Only change code below this line -->\n\n\n\n<!-- Only change code above this line -->\n</body>\n</html>",
-        fieldId: "subj-1-1"
+        fieldId: "subj-1-1",
+        sampleAnswer: '<code>&lt;h2&gt;My Hobbies&lt;/h2&gt;\n&lt;ol&gt;\n  &lt;li&gt;Reading&lt;/li&gt;\n  &lt;li class="highlight"&gt;Swimming&lt;/li&gt;\n  &lt;li&gt;Coding&lt;/li&gt;\n&lt;/ol&gt;\n&lt;p&gt;These are my favourite hobbies.&lt;/p&gt;</code>'
       },
       {
         label: "Part II",
         marks: 6,
         text: "Create an internal CSS stylesheet for the HTML structure. Apply the following styling:<br>a. Set the background color of the entire page to <code>#f0f0f0</code>.<br>b. Set the font size for the <code>h2</code> element to <code>20px</code> and the font color to <code>darkgreen</code>.",
         scaffold: "<!DOCTYPE html>\n<html>\n<head>\n  <title>My Hobbies</title>\n  <style>\n    /* Only change code below this line */\n\n\n\n    /* Only change code above this line */\n  </style>\n</head>\n<body>\n  <!-- (HTML structure from Part I) -->\n</body>\n</html>",
-        fieldId: "subj-1-2"
+        fieldId: "subj-1-2",
+        sampleAnswer: '<code>body {\n  background-color: #f0f0f0;\n}\n\nh2 {\n  font-size: 20px;\n  color: darkgreen;\n}</code>'
       },
       {
         label: "Part III",
         marks: 4,
         text: "Using the class selector, set the background color to <code>yellow</code> and the font weight to <code>bold</code> for the <code>\"highlight\"</code> class.",
         scaffold: "/* Only change code below this line */\n\n\n\n/* Only change code above this line */",
-        fieldId: "subj-1-3"
+        fieldId: "subj-1-3",
+        sampleAnswer: '<code>.highlight {\n  background-color: yellow;\n  font-weight: bold;\n}</code>'
       }
     ]
   },
@@ -605,28 +608,32 @@ const subjectiveQuestions = [
         marks: 6,
         text: "Using Bootstrap's grid system, create a row with four equal columns. In each column, place a paragraph (<code>&lt;p&gt;</code>) with any text you prefer.",
         scaffold: "<div class=\"row\">\n\n\n\n</div>",
-        fieldId: "subj-2-1"
+        fieldId: "subj-2-1",
+        sampleAnswer: '<code>&lt;div class="row"&gt;\n  &lt;div class="col-3"&gt;&lt;p&gt;Column 1&lt;/p&gt;&lt;/div&gt;\n  &lt;div class="col-3"&gt;&lt;p&gt;Column 2&lt;/p&gt;&lt;/div&gt;\n  &lt;div class="col-3"&gt;&lt;p&gt;Column 3&lt;/p&gt;&lt;/div&gt;\n  &lt;div class="col-3"&gt;&lt;p&gt;Column 4&lt;/p&gt;&lt;/div&gt;\n&lt;/div&gt;</code>'
       },
       {
         label: "Part II",
         marks: 4,
         text: "Explain how you would implement and use the following Bootstrap component in a web project:<br>a. A button with a primary color",
         scaffold: "",
-        fieldId: "subj-2-2"
+        fieldId: "subj-2-2",
+        sampleAnswer: '<code>&lt;button class="btn btn-primary"&gt;Click Me&lt;/button&gt;</code><br><br>The <code>btn</code> class applies Bootstrap\'s base button styling, and <code>btn-primary</code> sets the button color to Bootstrap\'s primary blue theme color.'
       },
       {
         label: "Part III",
         marks: 5,
         text: "Design the HTML using CSS. Given an <code>&lt;h1&gt;</code> element with an id of <code>page-title</code>, target this id and apply the following styles:<br>- Set the text color to navy.<br>- Set the font size to 32px.<br>- Add a bottom border of 2px solid gray.<br>- Set the text alignment to center.<br>- Add bottom margin of 15px.",
         scaffold: "// Write your code below this line\n\n",
-        fieldId: "subj-2-3"
+        fieldId: "subj-2-3",
+        sampleAnswer: '<code>#page-title {\n  color: navy;\n  font-size: 32px;\n  border-bottom: 2px solid gray;\n  text-align: center;\n  margin-bottom: 15px;\n}</code>'
       },
       {
         label: "Part IV",
         marks: 5,
         text: "Write the HTML for a footer section with the following requirements:<br>- It contains three links: Privacy Policy, Terms of Service, and Contact Us.<br>- Use an unordered list (<code>&lt;ul&gt;</code>) to structure the links.",
         scaffold: "// Write your code below this line\n\n",
-        fieldId: "subj-2-4"
+        fieldId: "subj-2-4",
+        sampleAnswer: '<code>&lt;footer&gt;\n  &lt;ul&gt;\n    &lt;li&gt;&lt;a href="#"&gt;Privacy Policy&lt;/a&gt;&lt;/li&gt;\n    &lt;li&gt;&lt;a href="#"&gt;Terms of Service&lt;/a&gt;&lt;/li&gt;\n    &lt;li&gt;&lt;a href="#"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;\n  &lt;/ul&gt;\n&lt;/footer&gt;</code>'
       }
     ]
   },
@@ -991,8 +998,8 @@ async function submitExam() {
       textarea.disabled = true;
       var code = textarea.value.trim();
 
+      var feedbackEl = document.getElementById("feedback-" + part.fieldId);
       if (part.autoCheck && part.testFn) {
-        var feedbackEl = document.getElementById("feedback-" + part.fieldId);
         if (code.length === 0) {
           feedbackEl.className = "feedback incorrect";
           feedbackEl.innerHTML = "No answer provided.";
@@ -1006,6 +1013,9 @@ async function submitExam() {
             feedbackEl.innerHTML = result.msg;
           }
         }
+      } else if (part.sampleAnswer) {
+        feedbackEl.className = "feedback correct";
+        feedbackEl.innerHTML = "<strong>Sample Answer:</strong><br>" + part.sampleAnswer;
       }
     });
   });
