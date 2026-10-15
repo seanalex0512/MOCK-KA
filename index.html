@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCK KA - Responsive Website Development</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAME ENTRY SCREEN -->
+  <div id="name-screen" class="screen">
+    <div class="name-card">
+      <h1>PENILAIAN AKHIR TEORI</h1>
+      <h2>MOCK KA — C01: Responsive Website Development</h2>
+      <p class="info">Duration: 2.5 hours &bull; Total: 100 marks</p>
+      <div class="name-input-group">
+        <label for="student-name">Enter your name to begin:</label>
+        <input type="text" id="student-name" placeholder="Full Name" autocomplete="off">
+        <button id="start-btn" onclick="startExam()">Start Exam</button>
+      </div>
+      <p id="name-error" class="error-msg"></p>
+    </div>
+  </div>
+
+  <!-- EXAM SCREEN -->
+  <div id="exam-screen" class="screen hidden">
+    <header>
+      <div class="header-left">
+        <span class="exam-title">MOCK KA — C01</span>
+        <span id="header-name" class="student-label"></span>
+      </div>
+      <div class="header-right">
+        <span id="progress-text">0 / 40 answered</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- SECTION A -->
+      <section class="section-banner">
+        <h2>Section A: Multiple Choice Questions</h2>
+        <p>Choose the correct answer. (1 mark each &bull; 40 marks total)</p>
+      </section>
+
+      <div id="mcq-container"></div>
+
+      <!-- SECTION B -->
+      <section class="section-banner">
+        <h2>Section B: Subjective Questions</h2>
+        <p>Answer all questions. (60 marks total)</p>
+      </section>
+
+      <div id="subjective-container"></div>
+
+      <!-- SUBMIT -->
+      <div class="submit-area">
+        <button id="submit-btn" onclick="submitExam()">Submit Exam</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- RESULTS OVERLAY -->
+  <div id="results-overlay" class="overlay hidden">
+    <div class="results-card">
+      <h2>Exam Results</h2>
+      <p id="results-name"></p>
+      <div class="score-display">
+        <div class="score-circle" id="score-circle">
+          <span id="score-number">0</span>
+          <span class="score-total">/ 100</span>
+        </div>
+      </div>
+      <div class="score-breakdown">
+        <p>Section A (MCQ): <strong id="mcq-score">0</strong> / 40</p>
+        <p>Section B (Subjective): <em>Manual marking required</em></p>
+      </div>
+      <button onclick="closeResults()">Review Answers</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
