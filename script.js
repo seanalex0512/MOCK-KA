@@ -1,3 +1,23 @@
+// ── HASH UTILITY ──
+// Answers are stored as SHA-256 hashes so students cannot read them from source
+async function hashAnswer(qId, key) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode("mockka2026" + qId + key);
+  const buffer = await crypto.subtle.digest("SHA-256", data);
+  const arr = Array.from(new Uint8Array(buffer));
+  return arr.map(function(b) { return b.toString(16).padStart(2, "0"); }).join("").substring(0, 16);
+}
+
+// Find the correct answer key by checking all options against the hash
+async function findCorrectKey(qId, hash) {
+  var keys = ["A", "B", "C", "D"];
+  for (var i = 0; i < keys.length; i++) {
+    var h = await hashAnswer(qId, keys[i]);
+    if (h === hash) return keys[i];
+  }
+  return null;
+}
+
 // ── MCQ DATA ──
 const mcqQuestions = [
   {
@@ -9,7 +29,7 @@ const mcqQuestions = [
       { key: "C", text: "<code>&lt;h1&gt;</code>" },
       { key: "D", text: "<code>&lt;header&gt;</code>" }
     ],
-    answer: "C",
+    answer: "510eeabe7749d115",
     explanation: "The <code>&lt;h1&gt;</code> tag defines the largest and most important heading in HTML. <code>&lt;h6&gt;</code> is the smallest heading."
   },
   {
@@ -21,7 +41,7 @@ const mcqQuestions = [
       { key: "C", text: "<code>&lt;b&gt;</code>" },
       { key: "D", text: "<code>&lt;u&gt;</code>" }
     ],
-    answer: "B",
+    answer: "09a205f3ba4d17f6",
     explanation: "The <code>&lt;em&gt;</code> tag is used to emphasize text, which browsers typically render in italic."
   },
   {
@@ -33,7 +53,7 @@ const mcqQuestions = [
       { key: "C", text: "<code>&lt;a&gt;</code>" },
       { key: "D", text: "<code>&lt;url&gt;</code>" }
     ],
-    answer: "C",
+    answer: "93312af347ef1837",
     explanation: "The <code>&lt;a&gt;</code> (anchor) tag is used to create hyperlinks. The <code>href</code> attribute specifies the URL, but it is not a tag itself."
   },
   {
@@ -45,7 +65,7 @@ const mcqQuestions = [
       { key: "C", text: "<code>&lt;ul&gt;</code>" },
       { key: "D", text: "<code>&lt;list&gt;</code>" }
     ],
-    answer: "C",
+    answer: "178c8f3ea3cbf75f",
     explanation: "The <code>&lt;ul&gt;</code> tag defines an unordered (bulleted) list. <code>&lt;ol&gt;</code> is for ordered (numbered) lists."
   },
   {
@@ -57,7 +77,7 @@ const mcqQuestions = [
       { key: "C", text: "color" },
       { key: "D", text: "foreground-color" }
     ],
-    answer: "C",
+    answer: "e0cc64136fb1b32b",
     explanation: "The CSS <code>color</code> property sets the text color. There is no <code>font-color</code> or <code>text-color</code> property in CSS."
   },
   {
@@ -69,7 +89,7 @@ const mcqQuestions = [
       { key: "C", text: "background-color" },
       { key: "D", text: "font-color" }
     ],
-    answer: "C",
+    answer: "d33dc2e42a3d4b91",
     explanation: "The <code>background-color</code> property sets the background color. <code>color</code> only affects text color."
   },
   {
@@ -81,7 +101,7 @@ const mcqQuestions = [
       { key: "C", text: "class" },
       { key: "D", text: "name" }
     ],
-    answer: "C",
+    answer: "bca7d01f6f52df5f",
     explanation: "The <code>class</code> attribute is used to apply one or more CSS classes to an HTML element."
   },
   {
@@ -93,7 +113,7 @@ const mcqQuestions = [
       { key: "C", text: "padding" },
       { key: "D", text: "gap" }
     ],
-    answer: "C",
+    answer: "382488e63fa27455",
     explanation: "The <code>padding</code> property adds space inside an element, between its content and its border. <code>margin</code> adds space outside the border."
   },
   {
@@ -105,7 +125,7 @@ const mcqQuestions = [
       { key: "C", text: "<code>&lt;picture&gt;</code>" },
       { key: "D", text: "<code>&lt;src&gt;</code>" }
     ],
-    answer: "A",
+    answer: "23f5466be7936307",
     explanation: "The <code>&lt;img&gt;</code> tag is the standard HTML element for embedding images. It uses the <code>src</code> attribute to specify the image source."
   },
   {
@@ -117,7 +137,7 @@ const mcqQuestions = [
       { key: "C", text: "To validate HTML and CSS code" },
       { key: "D", text: "To create custom animations" }
     ],
-    answer: "B",
+    answer: "8f9b169a4ff9f526",
     explanation: "Google Web Fonts (Google Fonts) provides a large library of free, open-source fonts that can be used in web projects."
   },
   {
@@ -129,7 +149,7 @@ const mcqQuestions = [
       { key: "C", text: "font-style" },
       { key: "D", text: "font-size" }
     ],
-    answer: "D",
+    answer: "0538046c5f0a9046",
     explanation: "The <code>font-size</code> property controls the size of text. <code>font-weight</code> controls boldness and <code>font-style</code> controls italic."
   },
   {
@@ -141,7 +161,7 @@ const mcqQuestions = [
       { key: "C", text: "font-weight: bold" },
       { key: "D", text: "text-transform: bold" }
     ],
-    answer: "C",
+    answer: "daabaf31f0df3b41",
     explanation: "The <code>font-weight: bold</code> CSS declaration makes text bold. <code>font-style</code> is for italic, not bold."
   },
   {
@@ -153,7 +173,7 @@ const mcqQuestions = [
       { key: "C", text: "absolute" },
       { key: "D", text: "sticky" }
     ],
-    answer: "C",
+    answer: "52ca17eb4bef3a81",
     explanation: "Absolute positioning removes the element from normal flow and positions it relative to the nearest ancestor that has a position value other than static."
   },
   {
@@ -165,7 +185,7 @@ const mcqQuestions = [
       { key: "C", text: ".fs-6" },
       { key: "D", text: ".fs-max" }
     ],
-    answer: "A",
+    answer: "fd8cca33c0235e03",
     explanation: "In Bootstrap, <code>.fs-1</code> sets the largest font size and <code>.fs-6</code> sets the smallest. There is no <code>.fs-max</code> class."
   },
   {
@@ -177,7 +197,7 @@ const mcqQuestions = [
       { key: "C", text: ".container-full" },
       { key: "D", text: ".container-wide" }
     ],
-    answer: "B",
+    answer: "4d9a40ddf5c7404a",
     explanation: "The <code>.container-fluid</code> class creates a full-width container that spans the entire viewport width."
   },
   {
@@ -189,7 +209,7 @@ const mcqQuestions = [
       { key: "C", text: "column" },
       { key: "D", text: "column-reverse" }
     ],
-    answer: "A",
+    answer: "f346269d3017f111",
     explanation: "The default value of <code>flex-direction</code> is <code>row</code>, which places flex items horizontally from left to right."
   },
   {
@@ -201,7 +221,7 @@ const mcqQuestions = [
       { key: "C", text: "flex-align" },
       { key: "D", text: "vertical-align" }
     ],
-    answer: "B",
+    answer: "47f5980f531671d3",
     explanation: "The <code>align-items</code> property aligns flex items along the cross axis. <code>justify-content</code> aligns along the main axis."
   },
   {
@@ -213,7 +233,7 @@ const mcqQuestions = [
       { key: "C", text: ".col-lg-" },
       { key: "D", text: ".col-xl-" }
     ],
-    answer: "B",
+    answer: "ea970a8b9d0e0b6c",
     explanation: "The <code>.col-md-</code> prefix targets medium-sized screens (tablets, typically 768px and up)."
   },
   {
@@ -225,7 +245,7 @@ const mcqQuestions = [
       { key: "C", text: "To create a fixed-width column" },
       { key: "D", text: "To make the column responsive at specific screen widths" }
     ],
-    answer: "D",
+    answer: "72a3643654539f79",
     explanation: "Breakpoints in Bootstrap column classes (e.g. <code>col-md-6</code>) make the column behave responsively at specific screen widths."
   },
   {
@@ -237,7 +257,7 @@ const mcqQuestions = [
       { key: "C", text: "display: grid;" },
       { key: "D", text: "display: inline;" }
     ],
-    answer: "C",
+    answer: "ac9875aa9dc7227e",
     explanation: "Setting <code>display: grid</code> on a container creates a CSS Grid layout. <code>display: flex</code> creates a Flexbox layout instead."
   },
   {
@@ -249,7 +269,7 @@ const mcqQuestions = [
       { key: "C", text: "<code>&lt;table&gt;</code> and <code>&lt;tr&gt;</code>" },
       { key: "D", text: "<code>&lt;tr&gt;</code> and <code>&lt;tfoot&gt;</code>" }
     ],
-    answer: "A",
+    answer: "881400b4ea6bc8c7",
     explanation: "<code>&lt;th&gt;</code> defines a table header cell (bold and centered by default) and <code>&lt;td&gt;</code> defines a standard data cell."
   },
   {
@@ -261,7 +281,7 @@ const mcqQuestions = [
       { key: "C", text: "space-between allows elements to wrap onto multiple lines, while space-around prevents wrapping." },
       { key: "D", text: "space-between distributes space in reverse order, while space-around distributes space in normal order." }
     ],
-    answer: "B",
+    answer: "736ce651a6d8fa32",
     explanation: "<code>space-between</code> places the first item at the start and last at the end, distributing space between them. <code>space-around</code> gives each item equal space on both sides."
   },
   {
@@ -273,7 +293,7 @@ const mcqQuestions = [
       { key: "C", text: "1" },
       { key: "D", text: "2" }
     ],
-    answer: "B",
+    answer: "b1d6aef1e6fa4014",
     explanation: "Arrays in JavaScript are zero-indexed, meaning the first element is at index 0."
   },
   {
@@ -285,7 +305,7 @@ const mcqQuestions = [
       { key: "C", text: "if" },
       { key: "D", text: "while" }
     ],
-    answer: "C",
+    answer: "f5d761a77690a875",
     explanation: "The <code>if</code> keyword creates a conditional statement. <code>for</code> and <code>while</code> are loops, and <code>switch</code> is a multi-case selector."
   },
   {
@@ -297,7 +317,7 @@ const mcqQuestions = [
       { key: "C", text: "Boolean" },
       { key: "D", text: "Object" }
     ],
-    answer: "C",
+    answer: "e9e8219bba1cad1f",
     explanation: "The Boolean data type has only two values: <code>true</code> and <code>false</code>."
   },
   {
@@ -309,7 +329,7 @@ const mcqQuestions = [
       { key: "C", text: "Adjacent sibling selector" },
       { key: "D", text: "Attribute selector" }
     ],
-    answer: "B",
+    answer: "cbed2ccc764a07da",
     explanation: "The child selector (<code>&gt;</code>) selects only direct children. The descendant selector (space) selects all nested elements at any depth."
   },
   {
@@ -321,7 +341,7 @@ const mcqQuestions = [
       { key: "C", text: "const" },
       { key: "D", text: "fixed" }
     ],
-    answer: "C",
+    answer: "76b0a64cd667bc9f",
     explanation: "<code>const</code> declares a variable that cannot be reassigned. <code>let</code> allows reassignment, and <code>var</code> is function-scoped."
   },
   {
@@ -333,7 +353,7 @@ const mcqQuestions = [
       { key: "C", text: "rem" },
       { key: "D", text: "vh" }
     ],
-    answer: "C",
+    answer: "731f6f1bd21ab825",
     explanation: "<code>rem</code> stands for 'root em' and is relative to the root element's font size. <code>em</code> is relative to the parent element's font size."
   },
   {
@@ -345,7 +365,7 @@ const mcqQuestions = [
       { key: "C", text: "border" },
       { key: "D", text: "gap" }
     ],
-    answer: "B",
+    answer: "fa025a4aeb673a82",
     explanation: "<code>margin</code> creates space outside an element's border. <code>padding</code> creates space inside the border."
   },
   {
@@ -358,7 +378,7 @@ const mcqQuestions = [
       { key: "C", text: "['red', 'green', 'blue']" },
       { key: "D", text: "['red']" }
     ],
-    answer: "A",
+    answer: "bb03586cdf49a630",
     explanation: "<code>slice(0, 2)</code> extracts elements from index 0 up to (but not including) index 2, which gives <code>['red', 'green']</code>."
   },
   // ROMAN NUMERAL QUESTIONS (31-40)
@@ -377,7 +397,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "A",
+    answer: "669954a0f5f376e9",
     explanation: "Statements I, II, and III are correct. Percentage (%) is actually a relative unit that scales with the parent element, so IV is incorrect."
   },
   {
@@ -395,7 +415,7 @@ const mcqQuestions = [
       { key: "C", text: "II, III, IV" },
       { key: "D", text: "I, III, IV" }
     ],
-    answer: "A",
+    answer: "b7d4eae7a7492fa5",
     explanation: "I and II are correct. III is wrong because the <code>fr</code> unit cannot be used for grid gaps (gaps use px, em, etc.). IV is wrong because <code>fr</code> can also be used with <code>grid-template-rows</code>."
   },
   {
@@ -413,7 +433,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "A",
+    answer: "052f682809e7514f",
     explanation: "I, II, and III are correct. IV is wrong — character encoding is set by <code>&lt;meta charset=\"UTF-8\"&gt;</code>, not the viewport tag."
   },
   {
@@ -431,7 +451,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "A",
+    answer: "8d1f0e4a824dc404",
     explanation: "I, II, and III are correct. IV is wrong — Arrays are objects (not primitive) and they can hold multiple values."
   },
   {
@@ -449,7 +469,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "A",
+    answer: "ac84a89a41a84e14",
     explanation: "I, II, and III are correct. IV is wrong — <code>flex-direction: column</code> arranges items from top to bottom, not left to right."
   },
   {
@@ -467,7 +487,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "A",
+    answer: "e26116b0b75cc2bd",
     explanation: "I, II, and III are correct. IV is wrong — Media Queries can target many characteristics including height, orientation, resolution, and more."
   },
   {
@@ -486,7 +506,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "B",
+    answer: "4a74972d8ed70f37",
     explanation: "I, II, and IV are correct. The loop runs from i=1 to i=10 (10 iterations), summing 1+2+...+10 = 55. III is wrong — the loop executes 10 times, not 9."
   },
   {
@@ -504,7 +524,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "A",
+    answer: "38d29e447e363b41",
     explanation: "I, II, and III are correct. IV is wrong — CSS Grid is for two-dimensional layouts while Flexbox is for one-dimensional layouts. They serve different purposes."
   },
   {
@@ -522,7 +542,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "A",
+    answer: "685195e89b202cd6",
     explanation: "I, II, and III are correct. IV is wrong — <code>&lt;span&gt;</code> is an inline element, not a block-level element."
   },
   {
@@ -540,7 +560,7 @@ const mcqQuestions = [
       { key: "C", text: "I, III, IV" },
       { key: "D", text: "II, III, IV" }
     ],
-    answer: "B",
+    answer: "a83352b6fa076c53",
     explanation: "I, II, and IV are correct. III is wrong — the character encoding is defined by the <code>&lt;meta charset&gt;</code> tag, not the DOCTYPE declaration."
   }
 ];
@@ -624,9 +644,9 @@ const subjectiveQuestions = [
         autoCheck: true,
         testFn: function(code) {
           try {
-            const fn = new Function(code + "\nreturn colors;");
-            const result = fn();
-            const expected = ["red", "blue", "green", "yellow", "purple"];
+            var fn = new Function(code + "\nreturn colors;");
+            var result = fn();
+            var expected = ["red", "blue", "green", "yellow", "purple"];
             if (Array.isArray(result) && JSON.stringify(result) === JSON.stringify(expected)) {
               return { pass: true };
             }
@@ -645,12 +665,12 @@ const subjectiveQuestions = [
         autoCheck: true,
         testFn: function(code) {
           try {
-            const logs = [];
-            const mockConsole = { log: function(msg) { logs.push(msg); } };
-            const fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple'];\n" + code;
-            const fn = new Function("console", fullCode);
+            var logs = [];
+            var mockConsole = { log: function(msg) { logs.push(msg); } };
+            var fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple'];\n" + code;
+            var fn = new Function("console", fullCode);
             fn(mockConsole);
-            const expected = [
+            var expected = [
               "Color 1: red",
               "Color 2: blue",
               "Color 3: green",
@@ -675,10 +695,10 @@ const subjectiveQuestions = [
         autoCheck: true,
         testFn: function(code) {
           try {
-            const fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple'];\n" + code + "\nreturn colors;";
-            const fn = new Function(fullCode);
-            const result = fn();
-            const expected = ["red", "blue", "green", "yellow", "purple", "orange"];
+            var fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple'];\n" + code + "\nreturn colors;";
+            var fn = new Function(fullCode);
+            var result = fn();
+            var expected = ["red", "blue", "green", "yellow", "purple", "orange"];
             if (JSON.stringify(result) === JSON.stringify(expected)) {
               return { pass: true };
             }
@@ -697,10 +717,10 @@ const subjectiveQuestions = [
         autoCheck: true,
         testFn: function(code) {
           try {
-            const fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];\n" + code + "\nreturn colors;";
-            const fn = new Function(fullCode);
-            const result = fn();
-            const expected = ["red", "blue", "green", "yellow", "purple"];
+            var fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];\n" + code + "\nreturn colors;";
+            var fn = new Function(fullCode);
+            var result = fn();
+            var expected = ["red", "blue", "green", "yellow", "purple"];
             if (JSON.stringify(result) === JSON.stringify(expected)) {
               return { pass: true };
             }
@@ -719,10 +739,10 @@ const subjectiveQuestions = [
         autoCheck: true,
         testFn: function(code) {
           try {
-            const fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple'];\n" + code + "\nreturn colors;";
-            const fn = new Function(fullCode);
-            const result = fn();
-            const expected = ["pink", "red", "blue", "green", "yellow", "purple"];
+            var fullCode = "const colors = ['red', 'blue', 'green', 'yellow', 'purple'];\n" + code + "\nreturn colors;";
+            var fn = new Function(fullCode);
+            var result = fn();
+            var expected = ["pink", "red", "blue", "green", "yellow", "purple"];
             if (JSON.stringify(result) === JSON.stringify(expected)) {
               return { pass: true };
             }
@@ -741,12 +761,12 @@ const subjectiveQuestions = [
         autoCheck: true,
         testFn: function(code) {
           try {
-            const logs = [];
-            const mockConsole = { log: function(msg) { logs.push(msg); } };
-            const fullCode = "const colors = ['pink', 'red', 'blue', 'green', 'yellow', 'purple'];\n" + code;
-            const fn = new Function("console", fullCode);
+            var logs = [];
+            var mockConsole = { log: function(msg) { logs.push(msg); } };
+            var fullCode = "const colors = ['pink', 'red', 'blue', 'green', 'yellow', 'purple'];\n" + code;
+            var fn = new Function("console", fullCode);
             fn(mockConsole);
-            const expected = ["blue", "green"];
+            var expected = ["blue", "green"];
             if (logs.length > 0 && JSON.stringify(logs[0]) === JSON.stringify(expected)) {
               return { pass: true };
             }
@@ -761,13 +781,13 @@ const subjectiveQuestions = [
 ];
 
 // ── STATE ──
-let studentName = "";
-let submitted = false;
+var studentName = "";
+var submitted = false;
 
 // ── START EXAM ──
 function startExam() {
-  const input = document.getElementById("student-name");
-  const name = input.value.trim();
+  var input = document.getElementById("student-name");
+  var name = input.value.trim();
   if (name.length === 0) {
     document.getElementById("name-error").textContent = "Please enter your name to continue.";
     return;
@@ -788,9 +808,9 @@ document.getElementById("student-name").addEventListener("keydown", function(e) 
 
 // ── RENDER MCQ ──
 function renderMCQ() {
-  const container = document.getElementById("mcq-container");
-  const html = mcqQuestions.map(function(q) {
-    let questionContent = '<div class="question-card" id="mcq-' + q.id + '">';
+  var container = document.getElementById("mcq-container");
+  var html = mcqQuestions.map(function(q) {
+    var questionContent = '<div class="question-card" id="mcq-' + q.id + '">';
     questionContent += '<div class="q-number">Question ' + q.id + ' of 40 &bull; 1 Mark</div>';
     questionContent += '<div class="q-text">' + q.text + '</div>';
 
@@ -827,16 +847,12 @@ function renderMCQ() {
 function selectOption(qId, key) {
   if (submitted) return;
 
-  const q = mcqQuestions.find(function(item) { return item.id === qId; });
-  // clear previous selection
+  var q = mcqQuestions.find(function(item) { return item.id === qId; });
   q.options.forEach(function(opt) {
     document.getElementById("opt-" + qId + "-" + opt.key).classList.remove("selected");
   });
-  // set new selection
   document.getElementById("opt-" + qId + "-" + key).classList.add("selected");
   document.getElementById("radio-" + qId + "-" + key).checked = true;
-
-  // mark card as answered
   document.getElementById("mcq-" + qId).classList.add("answered");
 
   updateProgress();
@@ -844,34 +860,33 @@ function selectOption(qId, key) {
 
 // ── UPDATE PROGRESS ──
 function updateProgress() {
-  let mcqAnswered = 0;
+  var mcqAnswered = 0;
   mcqQuestions.forEach(function(q) {
-    const card = document.getElementById("mcq-" + q.id);
+    var card = document.getElementById("mcq-" + q.id);
     if (card && card.classList.contains("answered")) mcqAnswered++;
   });
   document.getElementById("progress-text").textContent = mcqAnswered + " / 40 answered";
 
-  // Count subjective parts filled
-  let subjFilled = 0;
-  let subjTotal = 0;
+  var subjFilled = 0;
+  var subjTotal = 0;
   subjectiveQuestions.forEach(function(q) {
     q.parts.forEach(function(part) {
       subjTotal++;
-      const textarea = document.getElementById(part.fieldId);
+      var textarea = document.getElementById(part.fieldId);
       if (textarea && textarea.value.trim().length > 0) subjFilled++;
     });
   });
 
-  const totalItems = 40 + subjTotal;
-  const totalFilled = mcqAnswered + subjFilled;
-  const percent = Math.round((totalFilled / totalItems) * 100);
+  var totalItems = 40 + subjTotal;
+  var totalFilled = mcqAnswered + subjFilled;
+  var percent = Math.round((totalFilled / totalItems) * 100);
   document.getElementById("progress-bar").style.width = percent + "%";
 }
 
 // ── RENDER SUBJECTIVE ──
 function renderSubjective() {
-  const container = document.getElementById("subjective-container");
-  let html = "";
+  var container = document.getElementById("subjective-container");
+  var html = "";
 
   subjectiveQuestions.forEach(function(q) {
     html += '<div class="subjective-card" id="' + q.id + '">';
@@ -902,7 +917,7 @@ function renderSubjective() {
 function attachSubjectiveListeners() {
   subjectiveQuestions.forEach(function(q) {
     q.parts.forEach(function(part) {
-      const textarea = document.getElementById(part.fieldId);
+      var textarea = document.getElementById(part.fieldId);
       if (textarea) {
         textarea.addEventListener("input", updateProgress);
       }
@@ -911,32 +926,41 @@ function attachSubjectiveListeners() {
 }
 
 // ── SUBMIT EXAM ──
-function submitExam() {
+async function submitExam() {
   if (submitted) return;
 
-  const unanswered = [];
+  var unanswered = [];
   mcqQuestions.forEach(function(q) {
-    const card = document.getElementById("mcq-" + q.id);
+    var card = document.getElementById("mcq-" + q.id);
     if (!card.classList.contains("answered")) {
       unanswered.push(q.id);
     }
   });
 
   if (unanswered.length > 0) {
-    const proceed = confirm("You have " + unanswered.length + " unanswered MCQ question(s). Are you sure you want to submit?");
+    var proceed = confirm("You have " + unanswered.length + " unanswered MCQ question(s). Are you sure you want to submit?");
     if (!proceed) return;
   }
 
   submitted = true;
 
-  // Grade MCQ
-  let mcqScore = 0;
-  mcqQuestions.forEach(function(q) {
-    const selected = document.querySelector('input[name="q' + q.id + '"]:checked');
-    const card = document.getElementById("mcq-" + q.id);
-    const feedbackEl = document.getElementById("feedback-" + q.id);
+  // Grade MCQ using hashed comparison
+  var mcqScore = 0;
+  for (var i = 0; i < mcqQuestions.length; i++) {
+    var q = mcqQuestions[i];
+    var selected = document.querySelector('input[name="q' + q.id + '"]:checked');
+    var card = document.getElementById("mcq-" + q.id);
+    var feedbackEl = document.getElementById("feedback-" + q.id);
 
-    if (selected && selected.value === q.answer) {
+    var correctKey = await findCorrectKey(q.id, q.answer);
+    var isCorrect = false;
+
+    if (selected) {
+      var selectedHash = await hashAnswer(q.id, selected.value);
+      isCorrect = selectedHash === q.answer;
+    }
+
+    if (isCorrect) {
       mcqScore++;
       card.classList.add("correct");
       feedbackEl.className = "feedback correct";
@@ -944,38 +968,36 @@ function submitExam() {
     } else {
       card.classList.add("incorrect");
       feedbackEl.className = "feedback incorrect";
-      const yourAnswer = selected ? selected.value : "No answer";
-      feedbackEl.innerHTML = "Incorrect. You chose: " + yourAnswer + ". Correct answer: " + q.answer + ". " + q.explanation;
+      var yourAnswer = selected ? selected.value : "No answer";
+      feedbackEl.innerHTML = "Incorrect. You chose: " + yourAnswer + ". Correct answer: " + correctKey + ". " + q.explanation;
 
-      // Highlight correct and wrong options
       if (selected) {
         document.getElementById("opt-" + q.id + "-" + selected.value).classList.add("wrong-answer");
       }
-      document.getElementById("opt-" + q.id + "-" + q.answer).classList.add("correct-answer");
+      document.getElementById("opt-" + q.id + "-" + correctKey).classList.add("correct-answer");
     }
 
-    // Disable all options
     q.options.forEach(function(opt) {
-      const optEl = document.getElementById("opt-" + q.id + "-" + opt.key);
+      var optEl = document.getElementById("opt-" + q.id + "-" + opt.key);
       optEl.style.cursor = "default";
       optEl.onclick = null;
     });
-  });
+  }
 
   // Grade subjective (auto-check JS questions)
   subjectiveQuestions.forEach(function(q) {
     q.parts.forEach(function(part) {
-      const textarea = document.getElementById(part.fieldId);
+      var textarea = document.getElementById(part.fieldId);
       textarea.disabled = true;
-      const code = textarea.value.trim();
+      var code = textarea.value.trim();
 
       if (part.autoCheck && part.testFn) {
-        const feedbackEl = document.getElementById("feedback-" + part.fieldId);
+        var feedbackEl = document.getElementById("feedback-" + part.fieldId);
         if (code.length === 0) {
           feedbackEl.className = "feedback incorrect";
           feedbackEl.innerHTML = "No answer provided.";
         } else {
-          const result = part.testFn(code);
+          var result = part.testFn(code);
           if (result.pass) {
             feedbackEl.className = "feedback correct";
             feedbackEl.innerHTML = "Correct!";
@@ -1001,13 +1023,12 @@ function submitExam() {
 // ── CLOSE RESULTS ──
 function closeResults() {
   document.getElementById("results-overlay").classList.add("hidden");
-  // scroll to top to review
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // ── UTILITY ──
 function escapeHtml(text) {
-  const div = document.createElement("div");
+  var div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
 }
